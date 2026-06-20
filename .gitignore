@@ -1,0 +1,17 @@
+__pycache__/
+*.pyc
+*.pyo
+.env
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+output/
+data/articles.csv
+data/timeseries.csv
+data/strategy_stats.json
+data/strategy_weights.json
+data/imports/
+data/generated/
+*.xlsx
