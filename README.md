@@ -16,40 +16,74 @@
 - ✅ Prompt Few-shot 示例：AI 输出 JSON 更稳定
 - ✅ 桌面 GUI 版：双击即用，支持规则分类按钮
 
-## 快速开始
+## 使用教程
+
+### 第一步：安装环境
 
 ```bash
+# 安装 Python 3.10+（如果没有的话）
+# 下载地址：https://www.python.org/downloads/
+
 # 安装依赖
 pip install -r requirements.txt
-
-# 配置 API Key（生成文章才需要，分类不需要）
-cp .env.example .env
-# 编辑 .env，取消注释你想用的那组配置
-
-# 测试连接
-python main.py test
-
-# 导入数据
-python main.py import data/imports/你的数据.xlsx
-
-# 规则分类（不消耗 API）
-python main.py classify --rule-only
-
-# 生成文章
-python main.py generate --num 3
 ```
 
-## GUI 桌面版
+### 第二步：配置 API Key
+
+```bash
+# 复制配置模板
+cp .env.example .env
+
+# 用记�本打开 .env，取消注释你想用的那组配置
+# 例如使用 MiMo：
+# AI_API_KEY=你的密钥
+# AI_API_BASE_URL=https://api.xiaomimimo.com/v1
+# AI_MODEL=mimo-v2.5
+```
+
+### 第三步：导入头条数据
+
+1. 登录 [头条号后台](https://mp.toutiao.com)
+2. 点击「内容管理」→「数据分析」
+3. 点击「导出数据」，下载 xlsx 文件
+4. 把文件放到 `data/imports/` 目录
+5. 运行导入：
+
+```bash
+python main.py import data/imports/你的文件.xlsx
+```
+
+### 第四步：文章分类
+
+```bash
+# 规则分类（免费，不消耗 API）
+python main.py classify --rule-only
+```
+
+### 第五步：生成文章
+
+```bash
+# 生成 3 篇文章
+python main.py generate --num 3
+
+# 生成的文章在 data/generated/ 目录
+```
+
+### 桌面 GUI 版
 
 ```bash
 # 直接运行
 python gui.py
 
-# 创建桌面快捷方式（Windows）
-双击 create_shortcut.bat
+# 或者双击桌面快捷方式（先运行 create_shortcut.bat 创建）
+```
 
-# 打包为 exe
-双击 build.bat
+### 打包为 exe（可选）
+
+```bash
+# 双击 build.bat 自动打包
+# 打包好的 exe 在 dist/ 目录
+# 记得把 data/ 文件夹和 .env 也复制到 exe 旁边
 ```
 
 ## CLI 命令
